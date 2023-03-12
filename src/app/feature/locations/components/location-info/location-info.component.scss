@@ -1,0 +1,61 @@
+@import "src/styles/helpers/helpers-dir";
+
+.card-wrapper {
+  width: 200px;
+  border: 2px solid $border-color;
+  border-radius: $default-border-radius;
+  box-shadow: $box-shadow;
+
+  .card-header {
+    color: $white;
+    background: $primary;
+    padding: 0 12px;
+    margin: 0;
+  }
+
+  .card-body {
+    padding: 2px;
+    display: flex;
+    flex-direction: row;
+    margin: 4px 0;
+
+    .info-wrapper {
+      width: 50%;
+      margin-left: 8px;
+      p {
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    .img-wrapper {
+      height: 80px;
+      width: 50%;
+      border: 1px solid $border-color;
+      border-radius: 4px;
+      object-fit: contain;
+    }
+
+  }
+  .button-wrapper {
+    display: flex;
+    justify-content: end;
+    margin: 6px 0;
+
+    .btn {
+      cursor: pointer;
+      color: $white;
+      border-radius: $default-border-radius;
+      border: 1px solid $white;
+      margin-right: 8px;
+
+      &.btn-close {
+        background: $gray70;
+      }
+      &.btn-save {
+        background: $primary;
+      }
+    }
+  }
+
+}

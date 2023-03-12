@@ -1,0 +1,86 @@
+<div class="share-location-form">
+  <div class="card-wrapper">
+    <h2 class="card-header">
+      Share Location
+    </h2>
+    <section class="card-body">
+      <form [formGroup]="locationForm" (submit)="onSubmit()">
+        <div class="form-field-wrapper">
+          <label class="field-label">Location name: </label>
+          <div class="field-item">
+            <input type="text" formControlName="name" id="location-name" placeholder="Location name ...">
+            <div class="error-message-wrapper"
+                 *ngIf="(locationForm.controls['name'].hasError('required') &&
+              locationForm.controls['name'].touched) || (firstSubmitPush && locationForm.controls['name'].hasError('required'))">
+              Location name is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-field-wrapper">
+          <label class="field-label">Location on map: </label>
+
+          <div class="field-item map-wrapper">
+            <img class="pin-img" src="assets/images/pin.png" alt="pin...">
+            <agm-map #map
+                     [disableDefaultUI]="false"
+                     [latitude]="latitude"
+                     [longitude]="longitude"
+                     [zoom]="zoom"
+                     (centerChange)="centerChanged($event)">
+            </agm-map>
+          </div>
+        </div>
+
+        <div class="form-field-wrapper">
+          <label class="field-label">Location type: </label>
+
+          <div class="field-item">
+            <select id="location-type" formControlName="type">
+              <option selected disabled>Select location type</option>
+              <option value="home">Home</option>
+              <option value="work">Work</option>
+              <option value="office">Office</option>
+              <option value="other">Other</option>
+            </select>
+            <div class="error-message-wrapper"
+                 *ngIf="(locationForm.controls['type'].hasError('required') &&
+              locationForm.controls['type'].touched) || (firstSubmitPush && locationForm.controls['type'].hasError('required'))">
+              Location type is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-field-wrapper">
+          <label class="field-label">Logo: </label>
+          <div class="field-item">
+            <div class="uploader-card-wrapper" *ngIf="!imageURL">
+              <div class="card-header">Upload</div>
+              <div class="card-body">
+                <img src="./assets/images/upload-icon.png" (click)="attachFile()" alt="uploadImage">
+              </div>
+            </div>
+            <div class="image-wrapper" *ngIf="imageURL && imageURL !== ''">
+              <img class="image-preview" [src]="imageURL" alt="logo">
+              <img class="remove-icon" src="assets/images/remove.png" alt="remove" (click)="removeLogo()">
+            </div>
+            <input #uploader type="file" accept="image/*" formControlName="logo" (change)="uploaderChanged($event)"
+                   class="hidden"
+                   id="location-logo">
+            <div class="error-message-wrapper"
+                 *ngIf="(locationForm.controls['logo'].hasError('required') &&
+              locationForm.controls['logo'].touched) || (firstSubmitPush && locationForm.controls['logo'].hasError('required'))">
+              Location logo is required.
+            </div>
+          </div>
+
+        </div>
+        <div class="button-wrapper btn-container">
+          <button type="button" class="btn cancel-return" routerLink="/location">Cancel</button>
+          <button type="submit" class="btn btn-save">Save</button>
+        </div>
+
+      </form>
+    </section>
+  </div>
+
+</div>

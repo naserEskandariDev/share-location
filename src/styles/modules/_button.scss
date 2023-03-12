@@ -1,0 +1,80 @@
+@import "../helpers/constants";
+@import "../helpers/functions";
+
+.btn-container {
+  border-top: 1px solid $border-color;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 9px;
+
+
+  .cancel-return {
+    cursor: pointer;
+    width: 72px;
+    border: 2px solid $gray70;
+    background-color: $gray70 !important;
+    color: $white;
+    font-size: xdRatio(16)+px !important;
+    font-weight: bold;
+    height: xdRatio(40)+px;
+    border-radius: 5px;
+    line-height: 30px;
+  }
+
+  .btn-save_disabled {
+    width: 148px;
+    font-size: xdRatio(16)+px !important;
+    font-weight: bold;
+    height: xdRatio(40)+px;
+    border-radius: 5px;
+    margin-left: 5px;
+    line-height: 30px;
+    border: 2px solid #DCDCDC;
+    background-color: #E6E6E6;
+    color: $disableText;
+  }
+
+  .btn-save {
+    cursor: pointer;
+    padding: 0 6px;
+    width: 72px;
+    border: 2px solid $primary;
+    color: $white;
+    background-color: $primary !important;
+    font-size: xdRatio(16)+px !important;
+    font-weight: bold;
+    height: xdRatio(40)+px;
+    border-radius: 5px;
+    margin-left: 5px;
+    line-height: 30px;
+  }
+
+  .btn-small {
+    height: 20px!important;
+  }
+
+  .copy-button {
+    border-radius: 5px;
+    width: 151px;
+    background-color: $primary !important;
+    color: $white;
+    font-weight: bold;
+    font-size: xdRatio(16)+px !important;
+    height: xdRatio(40)+px;
+    margin-left: 5px;
+    line-height: 30px;
+
+    &.mat-button-disabled {
+      border: 2px solid #DCDCDC;
+      background-color: #E6E6E6 !important;
+      color: $disableText;
+    }
+  }
+
+  .form-valid-btn {
+    background-color: $primary;
+  }
+
+}

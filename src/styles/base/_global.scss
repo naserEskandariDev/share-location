@@ -1,0 +1,206 @@
+@import "../helpers/constants";
+@import "../helpers/mixins";
+
+* {
+  font-family: 'Yekan', 'YekanWeb', YekanWeb, Tahoma, Arial, sans-serif !important;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+}
+
+$col-sizes: (1: 16.66%, 2: 33.33%, 3: 50%, 4:66.66%, 5: 83.33%, 6:100%);
+
+@each $key, $value in $col-sizes {
+  .col-#{$key} {
+    width: $value;
+  }
+}
+
+
+$sizes: 24,
+20,
+19,
+16,
+14,
+13,
+12,
+11,
+10;
+
+@each $size in $sizes {
+  .font-#{$size} {
+    font-size: #{$size}px !important;
+  }
+}
+
+$col-sizes: (1: 16.66%, 2: 33.33%, 3: 50%, 4:66.66%, 5: 83.33%, 6:100%);
+
+@each $key, $value in $col-sizes {
+  .col-#{$key} {
+    width: $value;
+  }
+}
+
+$weights: 'bold', 'regular';
+
+@each $w in $weights {
+  .weight-#{$w} {
+    font-weight: #{$w} !important;
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: $gray92;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $primary;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $dark-blue;
+}
+
+.toast-custom {
+  bottom: 120px;
+  left: 1700px;
+}
+
+//main layout - sidebar -------------------------------
+.mini-sidebar-children__container {
+  margin: 0 !important;
+}
+
+.wrapper {
+  @include display-flex-config($dir: column);
+  height: 90%;
+  margin-top: 26px;
+}
+
+.main-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: $pickled-bluewood;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px !important;
+
+  .title-text {
+    margin: 8px;
+  }
+
+  .mat-icon {
+    width: 19px;
+    height: 18px;
+  }
+}
+
+.page-main-container {
+  background-color: $white;
+  box-shadow: 2px 10px 12px rgb(0 0 0 / 10%);
+  width: calc(100% - 40px);
+  border-radius: 8px;
+  height: 100%;
+  box-sizing: border-box;
+
+  padding: {
+    top: 21px;
+    right: 21px;
+    bottom: 37px;
+    left: 21px;
+  }
+
+  margin: {
+    right: 20px;
+    left: 20px;
+  }
+
+  .grid-container {
+    height: 96%;
+    overflow-y: auto;
+  }
+}
+
+.page-header-container {
+  @include display-flex-config();
+  margin-bottom: 8px;
+  width: calc(100% - 40px);
+  height: 90px;
+  flex-wrap: wrap;
+  background-color: $white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .16);
+
+  .company-identity {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+
+    .company-name {
+      @include display-flex-config();
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 0 21px;
+
+      p:first-child {
+        color: $pickled-bluewood;
+        margin: 0;
+      }
+    }
+  }
+
+  .sys {
+    @include display-flex-config();
+    padding: 5px 0;
+
+    span:first-child {
+      margin-left: 13px;
+      color: $pickled-bluewood;
+    }
+
+    span:last-child {
+      width: 300px;
+      margin-left: 21px;
+    }
+  }
+}
+
+//------------------------------------------------------------input number-----------------------------------------
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield !important;
+}
+
+//-----------------------------------------------------------------input number------------------------------------------
+
+//---------------------------------date-picker--------------------------------------------------------------------------------
+.mat-calendar-body-selected {
+  background-color: #fe9d2a !important;
+  color: white;
+}
+
+.agm-map-container-inner {
+  border: 1px solid $darkblue;
+  border-radius: $default-border-radius;
+}

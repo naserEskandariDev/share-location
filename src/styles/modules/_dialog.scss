@@ -1,0 +1,103 @@
+@import "../helpers/constants";
+@import "../helpers/functions";
+
+.dialog-header {
+  width: 100%;
+  background-color: rgba(50, 68, 88, 1);
+  border-radius: 5px 5px 0 0;
+  position: relative;
+  height: xdRatio(48)+px;
+  line-height: xdRatio(48)+px;
+
+  .dialog-close_icon {
+    cursor: pointer;
+    position: absolute;
+    top: 7px;
+    left: 15px;
+    height: 21px;
+    width: 21px;
+    color: $white;
+  }
+
+  .dialog-header_title {
+    text-align: center;
+    vertical-align: middle;
+    color: #FFF;
+    line-height: xdRatio(48)+px;
+    font-size: xdRatio(16)+px;
+    margin: 0 !important;
+  }
+}
+
+.mat-dialog-container {
+  padding: 0 !important;
+  overflow: hidden !important;
+  overflow-y: auto;
+  width: 100%;
+
+  .mat-dialog-content {
+    // height: calc(100% - 60px);
+    max-height: fit-content;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  mat-dialog-actions {
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+
+
+    .dialog-btnGroup {
+      .btn {
+        margin: 0 10px;
+        border: 1px solid $primary;
+      }
+
+      .confirm {
+        width: xdRatio(151)+px;
+        height: xdRatio(40)+px;
+        font-size: xdRatio(14)+px;
+        background-color: $primary;
+        border: 1px solid $primary;
+        color: $white;
+        border-radius: 5px;
+        line-height: 15px;
+        font-weight: bold;
+
+        &:hover {
+          background-color: #F59421;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+
+        &:focus {
+          outline: 0;
+        }
+      }
+
+      .cancel {
+        width: xdRatio(151)+px;
+        height: xdRatio(40)+px;
+        font-size: xdRatio(14)+px;
+        background-color: $white;
+        border: 1px solid $primary;
+        color: $primary;
+        border-radius: 5px;
+        line-height: 25px;
+        font-weight: bold;
+
+        &:hover {
+          background-color: $white;
+          cursor: pointer;
+        }
+
+        &:focus {
+          outline: 0;
+        }
+      }
+    }
+  }
+}
+

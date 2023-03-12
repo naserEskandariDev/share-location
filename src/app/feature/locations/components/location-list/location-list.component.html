@@ -1,0 +1,22 @@
+<div class="location-list-wrapper">
+  <div class="list-wrapper">
+  <h2 class="location-list-header">
+    My locations
+    <button class="btn btn-add" routerLink="add">+ Add</button>
+  </h2>
+  <div class="location-list-body">
+    <agm-map #map
+             [disableDefaultUI]="false"
+             [latitude]="mapConfig.geoLocation.lat"
+             [longitude]="mapConfig.geoLocation.lng"
+             [zoom]="mapConfig.zoom">
+      <agm-marker *ngFor="let item of locationList" [latitude]="item.location.lat" [longitude]="item.location.lng"
+                  [markerDraggable]="false">
+        <agm-info-window #agmInfo [disableAutoPan]="true" >
+          <app-location-info (closeInfo)="agmInfo.close()" [location]="item"></app-location-info>
+        </agm-info-window>
+      </agm-marker>
+    </agm-map>
+  </div>
+</div>
+</div>
