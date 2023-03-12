@@ -9,8 +9,12 @@ export class IndexedDbService<T> {
   constructor(private dbService: NgxIndexedDBService) {
   }
 
-  addItem(model: T, key: string): Observable<T> {
+  createItem(model: T, key: string): Observable<T> {
     return this.dbService.add(key, model);
+  }
+
+  updateItem(model: T, key: string): Observable<T> {
+    return this.dbService.update(key, model);
   }
 
   getItems(key: string): Observable<T[]> {

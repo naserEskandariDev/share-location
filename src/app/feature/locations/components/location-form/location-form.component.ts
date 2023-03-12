@@ -1,7 +1,5 @@
 import {
   AfterViewInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   ElementRef,
   OnInit,
@@ -11,6 +9,7 @@ import {AgmMap} from '@agm/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {LocationService} from '../../services/location.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ILocation} from '../../models/location.interface';
 
 @Component({
   selector: 'app-location-form',
@@ -25,6 +24,7 @@ export class LocationFormComponent implements OnInit, AfterViewInit {
   latitude: number = 51.516705368126554;
   firstSubmitPush = false;
   imageURL?: string;
+  editMode = false;
   zoom: number = 10;
 
   locationForm!: FormGroup;
@@ -40,21 +40,22 @@ export class LocationFormComponent implements OnInit, AfterViewInit {
         lng: new FormControl('', [Validators.required]),
       }),
       type: new FormControl('', [Validators.required]),
-      logo: new FormControl('', [Validators.required])
+      logo: new FormControl('')
     });
   }
 
   ngOnInit(): void {
     const locationId = this.activatedRoute.snapshot.params['id'];
     if (locationId) {
+      this.editMode = true;
       this.locationService.read(+locationId).subscribe( (res) => {
-        console.log(res);
         this.imgBlob = res.imgBlob;
         this.locationForm.get('name')?.setValue(res.name);
         this.locationForm.get('type')?.setValue(res.type);
         this.locationForm.patchValue({
           avatar: res.imgBlob
         });
+        this.locationForm.get('logo')?.setValue('');
         this.locationForm.get('logo')?.updateValueAndValidity()
         this.locationForm.get('location')?.patchValue(res.location);
         this.latitude = res.location.lat;
@@ -74,10 +75,9 @@ export class LocationFormComponent implements OnInit, AfterViewInit {
     if (this.agmMap) {
       setTimeout(() => {
         this.agmMap.triggerResize();
-        console.log(this.agmMap);
       }, 100);
     } else {
-      console.log('map was not rendered');
+      console.warn('map was not rendered');
     }
   }
 
@@ -122,8 +122,16 @@ export class LocationFormComponent implements OnInit, AfterViewInit {
 
   onSubmit(): void {
     this.firstSubmitPush = true;
-    if (this.locationForm.valid) {
-      this.locationService.create({...this.locationForm.value, imgBlob: this.imgBlob}).subscribe( (res) => {
+    if (this.locationForm.valid && this.imageURL) {
+      const model = {...this.locationForm.value, imgBlob: this.imgBlob}
+      let service: any;
+      if (this.editMode) {
+        model.id = this.activatedRoute.snapshot.params['id'];
+        service = this.locationService.update(model);
+      } else {
+        service = this.locationService.create(model)
+      }
+      service.subscribe( (res: ILocation) => {
         if (res?.id) {
           this.router.navigateByUrl('/location').then();
         }
@@ -132,7 +140,7 @@ export class LocationFormComponent implements OnInit, AfterViewInit {
   }
 
   removeLogo() {
-    this.imageURL = '';
+    this.imageURL = undefined;
     this.locationForm.get('logo')?.setValue(null);
   }
 }

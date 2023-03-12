@@ -4,13 +4,17 @@ import {IndexedDbService} from './indexed-db.service';
 
 export class BaseService<T extends IBaseModel> {
   protected constructor(
-    public key: string,
-    public indexedDBService: IndexedDbService<T>,
+      public key: string,
+      public indexedDBService: IndexedDbService<T>,
   ) {
   }
 
   create(model: T): Observable<T> {
-    return this.indexedDBService.addItem(model, this.key);
+    return this.indexedDBService.createItem(model, this.key);
+  }
+
+  update(model: T): Observable<T> {
+    return this.indexedDBService.updateItem(model, this.key);
   }
 
   readAll(): Observable<T[]> {
@@ -19,7 +23,7 @@ export class BaseService<T extends IBaseModel> {
 
   read(id: ID): Observable<T> {
     return this.indexedDBService.getItems(this.key).pipe(
-      switchMap((list) =>  of(list.find((item: T) =>  item.id === id) as T)));
+        switchMap((list) =>  of(list.find((item: T) =>  item.id === id) as T)));
   }
 
 }

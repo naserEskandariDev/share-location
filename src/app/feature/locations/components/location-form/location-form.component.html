@@ -59,7 +59,7 @@
                 <img src="./assets/images/upload-icon.png" (click)="attachFile()" alt="uploadImage">
               </div>
             </div>
-            <div class="image-wrapper" *ngIf="imageURL && imageURL !== ''">
+            <div class="image-wrapper" *ngIf="imageURL">
               <img class="image-preview" [src]="imageURL" alt="logo">
               <img class="remove-icon" src="assets/images/remove.png" alt="remove" (click)="removeLogo()">
             </div>
@@ -67,8 +67,7 @@
                    class="hidden"
                    id="location-logo">
             <div class="error-message-wrapper"
-                 *ngIf="(locationForm.controls['logo'].hasError('required') &&
-              locationForm.controls['logo'].touched) || (firstSubmitPush && locationForm.controls['logo'].hasError('required'))">
+                 *ngIf="(locationForm.controls['logo'].touched || firstSubmitPush ) && (!imageURL)">
               Location logo is required.
             </div>
           </div>
