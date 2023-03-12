@@ -1,0 +1,27 @@
+
+@font-face {
+  font-family: YekanBold;
+  font-weight: bold;
+  src: url('../../assets/fonts/B-yakan/iranyekanwebbold(fanum).ttf');
+  src: local('?'),
+    url('../../assets/fonts/B-yakan/iranyekanwebbold(fanum).ttf') format('ttf'),
+    url('../../assets/fonts/B-yakan/iranyekanwebbold(fanum).ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: YekanWeb;
+  font-weight: 500;
+  src: url('../../assets/fonts/B-yakan/iranyekanwebregular(fanum).ttf');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: YekanLight;
+  font-weight: 200;
+  src: url('../../assets/fonts/B-yakan/iranyekanweblight(fanum).ttf');
+  src: local('?'),
+    url('../../assets/fonts/B-yakan/iranyekanweblight(fanum).ttf') format('woff'),
+    url('../../assets/fonts/B-yakan/iranyekanweblight(fanum).ttf') format('truetype');
+  font-style: normal;
+}

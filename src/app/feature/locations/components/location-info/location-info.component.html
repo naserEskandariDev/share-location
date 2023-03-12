@@ -1,0 +1,22 @@
+<div class="card-wrapper">
+  <div class="card-header">Location Details</div>
+  <div class="card-body">
+    <img class="img-wrapper" [src]="imageURL" alt="logo">
+    <section class="info-wrapper">
+      <div>
+        <p>Name:</p>
+        <strong>{{location.name}}</strong>
+      </div>
+      <div>
+        <p>Type:</p>
+        <strong>{{location.type}}</strong>
+      </div>
+
+    </section>
+  </div>
+  <div class="button-wrapper">
+    <button class="btn btn-close" (click)="onClose()">Close</button>
+    <button class="btn btn-save" [routerLink]="['/location/edit/', location.id]">Edit</button>
+  </div>
+
+</div>

@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  mapDefaultConfig: {
+    geoLocation: {
+      lat: 51.516705368126554,
+      lng: -0.13284970668561824
+    },
+    zoom: 6
+  },
 };
 
 /*

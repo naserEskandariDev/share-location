@@ -1,0 +1,44 @@
+@import "src/styles/helpers/helpers-dir";
+
+.location-list-wrapper {
+  @include display-flex-config();
+  height: 100vh;
+  overflow-y: auto;
+
+  .list-wrapper {
+    width: 500px;
+    height: auto;
+    border: 2px solid $border-color;
+    border-radius: $default-border-radius;
+    box-shadow: $box-shadow;
+
+    .location-list-header {
+      color: $white;
+      background: $primary;
+      padding: 0 12px;
+      margin: 0;
+
+      .btn-add {
+        border-radius: $default-border-radius;
+        border: 1px solid $dark-blue;
+        background: white;
+        color: $primary;
+        float: right;
+        margin-top: 6px;
+      }
+    }
+
+    .location-list-body {
+      padding: 4px 8px;
+
+      agm-map {
+        height: 400px;
+        width: 100%;
+      }
+    }
+  }
+
+
+}
+
+

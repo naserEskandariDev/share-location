@@ -1,0 +1,129 @@
+@import "src/styles/helpers/helpers-dir";
+
+.share-location-form {
+  @include display-flex-config();
+  height: 100vh;
+  overflow-y: auto;
+
+  .card-wrapper {
+    width: 500px;
+    height: auto;
+    border: 2px solid $border-color;
+    border-radius: $default-border-radius;
+    box-shadow: $box-shadow;
+
+    .card-header {
+      color: $white;
+      background: $primary;
+      padding: 0 12px;
+      margin: 0;
+    }
+
+    .card-body {
+      padding: 4px 8px;
+
+      .form-field-wrapper {
+        display: flex;
+        flex-direction: row;
+        margin: 22px 8px;
+
+        .field-label {
+          width: 40%;
+        }
+
+        .field-item {
+          width: 60%;
+
+          .error-message-wrapper {
+            position: absolute;
+            color: red;
+            font-size: 12px;
+          }
+
+          input {
+            width: calc(100% - 8px);
+
+            &.hidden {
+              display: none;
+            }
+          }
+
+          select {
+            width: 100%;
+          }
+
+          .image-wrapper {
+            position: relative;
+            @include display-flex-config();
+            border: 1px solid $border-color;
+            border-radius: $default-border-radius;
+
+            .remove-icon {
+              width: 20px;
+              height: 26px;
+              position: absolute;
+              border-radius: 100%;
+              border-color: $border-color;
+              right: 10px;
+              top: 10px;
+              cursor: pointer;
+            }
+
+            .image-preview {
+              height: 124px;
+              border-radius: 4px;
+              object-fit: contain;
+            }
+          }
+
+          .uploader-card-wrapper {
+            width: 100%;
+            height: auto;
+            border: 2px solid $border-color;
+            border-radius: $default-border-radius;
+
+            .card-header {
+              color: $white;
+              background: $primary;
+              padding: 0 12px;
+              text-align: center;
+              font-weight: bolder;
+            }
+
+            .card-body {
+              height: 100px;
+              @include display-flex-config();
+
+              img {
+                cursor: pointer;
+                height: 50px;
+              }
+            }
+          }
+        }
+
+        .map-wrapper {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .pin-img {
+            position: absolute;
+            height: 30px;
+            z-index: 1;
+          }
+
+          agm-map {
+            height: 200px;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+
+}
+
+
